@@ -6,6 +6,7 @@ physicsClient = p.connect(p.GUI)
 p.setAdditionalSearchPath(pybullet_data.getDataPath())
 p.configureDebugVisualizer(p.COV_ENABLE_GUI,0)
 p.setGravity(0,0,-9.8)
+robotId = p.loadURDF("body.urdf")
 planeId = p.loadURDF("plane.urdf")
 p.loadSDF("world.sdf")
 for i in range(1000):
