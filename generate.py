@@ -22,5 +22,27 @@ def Create_Robot():
     pyrosim.Send_Joint(name = "Link7_Link8" , parent= "Link7" , child = "Link8" , type = "revolute", position = [0,0,-0.5])
     pyrosim.Send_Cube(name="Link8", pos=[0, 0, -0.5] , size=[1, 1, 1])
     pyrosim.End()
+def Create_Robot(startingPosition):
+    pyrosim.Start_URDF("body.urdf")
+    absolutePosition = startingPosition
+    print(absolutePosition)
+    pyrosim.Send_Cube(name="Torso", pos=absolutePosition , size=[1, 1, 1])
+    absolutePosition[1] = absolutePosition[1] - 0.5
+    absolutePosition[2] = absolutePosition[2] - 0.5
+    print(absolutePosition)
+    pyrosim.Send_Joint(name = "Torso_Frontleg" , parent= "Torso" , child = "Frontleg" , type = "revolute", position = absolutePosition)
+    absolutePosition[1] = absolutePosition[1] - 1.5
+    absolutePosition[2] = absolutePosition[2] - 1.5
+    print(absolutePosition)
+    pyrosim.Send_Cube(name="Frontleg", pos=absolutePosition , size=[1, 1, 1])
+    absolutePosition[1] = absolutePosition[1] + 2.5
+    absolutePosition[2] = absolutePosition[2] + 1.5
+    print(absolutePosition)
+    pyrosim.Send_Joint(name = "Torso_Backleg" , parent= "Torso" , child = "Backleg" , type = "revolute", position = absolutePosition)
+    absolutePosition[1] = absolutePosition[1] - 1.5
+    absolutePosition[2] = absolutePosition[2] - 1.5
+    print(absolutePosition)
+    pyrosim.Send_Cube(name="Backleg", pos=absolutePosition , size=[1, 1, 1])
+    pyrosim.End()
 # Create_World()
-Create_Robot()
+Create_Robot([0, 1.5, 1.5])
