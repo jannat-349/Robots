@@ -20,5 +20,4 @@ for i in range(100):
     time.sleep(1/60)
     # print(i)
 np.save("data/backLegSensorValues.npy", backLegSensorValues)
-print(np.load("data//backLegSensorValues.npy"))
 p.disconnect()
