@@ -14,6 +14,8 @@ planeId = p.loadURDF("plane.urdf")
 pyrosim.Prepare_To_Simulate(robotId)
 backLegSensorValues = np.zeros(1000)
 frontLegSensorValues = np.zeros(1000)
+x = np.linspace(0, np.pi * 2, 1000)
+targetAngles = np.sin(x)
 
 for i in range(1000):
     p.stepSimulation()
@@ -24,4 +26,5 @@ for i in range(1000):
     time.sleep(1/60)
 np.save("data/backlegSensorValues.npy", backLegSensorValues)
 np.save("data/frontlegSensorValues.npy", frontLegSensorValues)
+np.save("data/targetAngleValues.npy", targetAngles)
 p.disconnect()
