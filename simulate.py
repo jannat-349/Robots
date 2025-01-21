@@ -7,13 +7,6 @@
 # import constants as c
 from simulation import SIMULATION
 
-# physicsClient = p.connect(p.GUI) 
-# p.setAdditionalSearchPath(pybullet_data.getDataPath())
-# p.configureDebugVisualizer(p.COV_ENABLE_GUI,0)
-# p.setGravity(0,0,-9.8)
-# robotId = p.loadURDF("body.urdf")
-# planeId = p.loadURDF("plane.urdf")
-# pyrosim.Prepare_To_Simulate(robotId)
 # backLegSensorValues = np.zeros(1000)
 # frontLegSensorValues = np.zeros(1000)
 
