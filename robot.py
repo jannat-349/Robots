@@ -24,6 +24,7 @@ class ROBOT:
             sensor.Get_Value(i)  
    
     def Think(self):
+        self.nn.Update()
         self.nn.Print()
 
     def Act(self, robotId, i):
