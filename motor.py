@@ -7,7 +7,7 @@ class MOTOR:
     def __init__(self, jointName):
         self.jointName = jointName
         self.Prepare_To_Act()
-        self.motorValues = np.zeros(1000)
+        self.motorValues
 
     def Prepare_To_Act(self):
         self.amplitude = c.amplitude

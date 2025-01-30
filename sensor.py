@@ -1,12 +1,10 @@
 import pyrosim.pyrosim as pyrosim
-import time
+import numpy as np
 class SENSOR:
     def __init__(self, linkName):
         self.linkName = linkName
-        self.values = {}
+        self.values = np.zeros(1000)
     
     def Get_Value(self, i):
         self.values[i] = pyrosim.Get_Touch_Sensor_Value_For_Link(self.linkName)
-        if i == 999:
-            print(self.values[i])
         
