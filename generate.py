@@ -22,5 +22,11 @@ def Generate_Body(startingPosition):
     print(absolutePosition)
     pyrosim.Send_Cube(name="Backleg", pos=absolutePosition , size=[1, 1, 1])
     pyrosim.End()
-    
+
+def Generate_Brain():
+    pyrosim.Start_NeuralNetwork("brain.nndf")
+    pyrosim.Send_Sensor_Neuron(name = 0 , linkName = "Torso")
+    pyrosim.End()
+   
 Generate_Body([1.5, 0, 2])
+Generate_Brain()
