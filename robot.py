@@ -25,7 +25,6 @@ class ROBOT:
    
     def Think(self):
         self.nn.Update()
-        self.nn.Print()
 
     def Act(self, robotId):
         for neuronName in self.nn.Get_Neuron_Names():
