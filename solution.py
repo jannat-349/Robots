@@ -1,5 +1,6 @@
 import pyrosim.pyrosim as pyrosim
 import numpy as np
+import os
 class SOLUTION:
     def __init__(self):
         self.weights = np.random.rand(3, 2) 
@@ -43,4 +44,5 @@ class SOLUTION:
     def Evaluate(self):
         self.Create_Body([1.5, 0, 2])
         self.Create_Brain()
+        os.system("python simulate.py")
     
