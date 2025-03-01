@@ -1,5 +1,5 @@
 import pyrosim.pyrosim as pyrosim
-
+import random
 def Generate_Body(startingPosition):
     pyrosim.Start_URDF("body.urdf")
     absolutePosition = startingPosition
@@ -30,8 +30,9 @@ def Generate_Brain():
     pyrosim.Send_Sensor_Neuron(name = 2 , linkName = "Frontleg")
     pyrosim.Send_Motor_Neuron( name = 3 , jointName = "Torso_Frontleg")
     pyrosim.Send_Motor_Neuron( name = 4 , jointName = "Torso_Backleg")
-    pyrosim.Send_Synapse( sourceNeuronName = 1 , targetNeuronName = 3 , weight = 3.0 )
-    pyrosim.Send_Synapse( sourceNeuronName = 2 , targetNeuronName = 4 , weight = -1.0 )
+    for i in range(3):
+        for j in range(3, 5):
+            pyrosim.Send_Synapse(sourceNeuronName = i, targetNeuronName = j, weight= 1.0)
     pyrosim.End()
    
 Generate_Body([1.5, 0, 2])
