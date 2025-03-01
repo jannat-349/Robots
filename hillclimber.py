@@ -11,8 +11,6 @@ class HILL_CLIMBER:
 
     def Mutate(self):
         self.child.Mutate()
-        print("parent weights: ", self.parent.weights)
-        print("child weights: ", self.child.weights)
 
     def Select(self):
         pass
