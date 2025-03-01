@@ -32,7 +32,7 @@ def Generate_Brain():
     pyrosim.Send_Motor_Neuron( name = 4 , jointName = "Torso_Backleg")
     for i in range(3):
         for j in range(3, 5):
-            pyrosim.Send_Synapse(sourceNeuronName = i, targetNeuronName = j, weight= random.random())
+            pyrosim.Send_Synapse(sourceNeuronName = i, targetNeuronName = j, weight= random.uniform(-1, 1))
     pyrosim.End()
    
 Generate_Body([1.5, 0, 2])
