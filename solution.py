@@ -1,5 +1,46 @@
+import pyrosim.pyrosim as pyrosim
 import numpy as np
 class SOLUTION:
     def __init__(self):
         self.weights = np.random.rand(3, 2) 
         self.weights = self.weights * 2 - 1
+
+    def Create_Body(self, startingPosition):
+        pyrosim.Start_URDF("body.urdf")
+        absolutePosition = startingPosition
+        print(absolutePosition)
+        pyrosim.Send_Cube(name="Torso", pos=absolutePosition , size=[1, 1, 1])
+        absolutePosition[0] = absolutePosition[0] - 0.5
+        absolutePosition[2] = absolutePosition[2] - 0.5
+        print(absolutePosition)
+        pyrosim.Send_Joint(name = "Torso_Frontleg" , parent= "Torso" , child = "Frontleg" , type = "revolute", position = absolutePosition)
+        absolutePosition[0] = absolutePosition[0] - 1.5
+        absolutePosition[2] = absolutePosition[2] - 2
+        print(absolutePosition)
+        pyrosim.Send_Cube(name="Frontleg", pos=absolutePosition , size=[1, 1, 1])
+        absolutePosition[0] = absolutePosition[0] + 2.5
+        absolutePosition[2] = absolutePosition[2] + 2
+        print(absolutePosition)
+        pyrosim.Send_Joint(name = "Torso_Backleg" , parent= "Torso" , child = "Backleg" , type = "revolute", position = absolutePosition)
+        absolutePosition[0] = absolutePosition[0] - 1.5
+        absolutePosition[2] = absolutePosition[2] - 2
+        print(absolutePosition)
+        pyrosim.Send_Cube(name="Backleg", pos=absolutePosition , size=[1, 1, 1])
+        pyrosim.End()
+
+    def Create_Brain(self):
+        pyrosim.Start_NeuralNetwork("brain.nndf")
+        pyrosim.Send_Sensor_Neuron(name = 0 , linkName = "Torso")
+        pyrosim.Send_Sensor_Neuron(name = 1 , linkName = "Backleg")
+        pyrosim.Send_Sensor_Neuron(name = 2 , linkName = "Frontleg")
+        pyrosim.Send_Motor_Neuron( name = 3 , jointName = "Torso_Frontleg")
+        pyrosim.Send_Motor_Neuron( name = 4 , jointName = "Torso_Backleg")
+        for currentRow in range(3):
+            for currentColumn in range(2):
+                pyrosim.Send_Synapse(sourceNeuronName = currentRow, targetNeuronName = currentColumn + 3, weight= self.weights[currentRow][currentColumn])
+        pyrosim.End()
+
+    def Evaluate(self):
+        self.Create_Body([1.5, 0, 2])
+        self.Create_Brain()
+    
