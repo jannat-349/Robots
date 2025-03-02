@@ -7,7 +7,7 @@ import time
 
 class SIMULATION:
     def __init__(self):
-        self.physicsClient = p.connect(p.GUI) 
+        self.physicsClient = p.connect(p.DIRECT) 
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
         p.configureDebugVisualizer(p.COV_ENABLE_GUI,0)
         p.setGravity(0,0,-9.8)
