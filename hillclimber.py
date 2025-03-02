@@ -22,11 +22,14 @@ class HILL_CLIMBER:
     def Evolve_For_One_Generation(self):
         self.Spawn()
         self.Mutate()
-        self.child.Evaluate()
+        self.child.Evaluate("DIRECT")
         self.Print()
         self.Select()
+
+    def Show_Best(self):
+        self.parent.Evaluate("GUI")
     
     def Evolve(self):
-        self.parent.Evaluate()
+        self.parent.Evaluate("DIRECT")
         for currentGeneration in range (c.numberOfGenerations):
             self.Evolve_For_One_Generation()

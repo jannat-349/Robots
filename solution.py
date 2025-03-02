@@ -38,10 +38,10 @@ class SOLUTION:
                 pyrosim.Send_Synapse(sourceNeuronName = currentRow, targetNeuronName = currentColumn + 3, weight= self.weights[currentRow][currentColumn])
         pyrosim.End()
 
-    def Evaluate(self):
+    def Evaluate(self, directOrGui):
         self.Create_Body([1.5, 0, 2])
         self.Create_Brain()
-        os.system("python simulate.py")
+        os.system("python simulate.py " + directOrGui)
         f = open("fitness.txt", "r")
         self.fitness = float (f.read())
         f.close()
