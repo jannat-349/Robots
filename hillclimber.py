@@ -13,7 +13,8 @@ class HILL_CLIMBER:
         self.child.Mutate()
 
     def Select(self):
-        pass
+        if self.parent.fitness > self.child.fitness:
+            self.parent = self.child
 
     def Evolve_For_One_Generation(self):
         self.Spawn()
