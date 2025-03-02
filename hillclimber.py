@@ -15,11 +15,15 @@ class HILL_CLIMBER:
     def Select(self):
         if self.parent.fitness > self.child.fitness:
             self.parent = self.child
+    
+    def Print(self):
+        print(self.parent.fitness, self.child.fitness)
 
     def Evolve_For_One_Generation(self):
         self.Spawn()
         self.Mutate()
         self.child.Evaluate()
+        self.Print()
         self.Select()
     
     def Evolve(self):
