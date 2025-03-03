@@ -4,9 +4,10 @@ import os
 import random
 
 class SOLUTION:
-    def __init__(self):
+    def __init__(self, nextAvailableID):
         self.weights = np.random.rand(3, 2) 
         self.weights = self.weights * 2 - 1
+        self.Set_ID(nextAvailableID)
 
     def Create_Body(self, startingPosition):
         pyrosim.Start_URDF("body.urdf")
@@ -37,6 +38,9 @@ class SOLUTION:
             for currentColumn in range(2):
                 pyrosim.Send_Synapse(sourceNeuronName = currentRow, targetNeuronName = currentColumn + 3, weight= self.weights[currentRow][currentColumn])
         pyrosim.End()
+
+    def Set_ID(self, nextAvailableID):
+        self.myID = nextAvailableID
 
     def Evaluate(self, directOrGui):
         self.Create_Body([1.5, 0, 2])
