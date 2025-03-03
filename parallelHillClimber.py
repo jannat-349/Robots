@@ -1,9 +1,12 @@
 from solution import SOLUTION
 import constants as c
 import copy
+import os
 
 class PARALLEL_HILL_CLIMBER:
     def __init__(self):
+        os.system("del brain*.nndf")
+        os.system("del fitness*.txt")
         self.parents = {}
         self.nextAvailableID = 0
         for i in range(c.populationSize):
@@ -26,11 +29,12 @@ class PARALLEL_HILL_CLIMBER:
         print(self.parent.fitness, self.child.fitness)
 
     def Evolve_For_One_Generation(self):
-        self.Spawn()
-        self.Mutate()
-        self.child.Evaluate("DIRECT")
-        self.Print()
-        self.Select()
+        # self.Spawn()
+        # self.Mutate()
+        # self.child.Evaluate("DIRECT")
+        # self.Print()
+        # self.Select()
+        pass
 
     def Show_Best(self):
         # self.parent.Evaluate("GUI")
@@ -38,10 +42,10 @@ class PARALLEL_HILL_CLIMBER:
     
     def Evolve(self):
         # self.parent.Evaluate("DIRECT")
-        # for currentGeneration in range (c.numberOfGenerations):
-        #     self.Evolve_For_One_Generation()
-        for parent in self.parents.values():
-            parent.Start_Simulation("DIRECT")
-        
-        for parent in self.parents.values():
-            parent.Wait_For_Simulation_To_End()
+        for currentGeneration in range (c.numberOfGenerations):
+            self.Evolve_For_One_Generation()
+            for parent in self.parents.values():
+                parent.Start_Simulation("DIRECT")
+            
+            for parent in self.parents.values():
+                parent.Wait_For_Simulation_To_End()
