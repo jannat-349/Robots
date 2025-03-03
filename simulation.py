@@ -16,6 +16,7 @@ class SIMULATION:
         p.setGravity(0,0,-9.8)
         self.robotId = p.loadURDF("body.urdf")
         self.planeId = p.loadURDF("plane.urdf")
+        p.loadSDF("world.sdf")
         pyrosim.Prepare_To_Simulate(self.robotId)
         self.world = WORLD()
         self.robot = ROBOT()

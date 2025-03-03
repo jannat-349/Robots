@@ -9,6 +9,11 @@ class SOLUTION:
         self.weights = self.weights * 2 - 1
         self.Set_ID(nextAvailableID)
 
+    def Create_World(self):
+        pyrosim.Start_SDF("world.sdf")
+        pyrosim.Send_Cube(name = "Box", pos = [-2, -2, 0.5], size = [1, 1, 1])
+        pyrosim.End()
+
     def Create_Body(self, startingPosition):
         pyrosim.Start_URDF("body.urdf")
         absolutePosition = startingPosition
@@ -45,6 +50,7 @@ class SOLUTION:
     def Evaluate(self, directOrGui):
         self.Create_Body([1.5, 0, 2])
         self.Create_Brain()
+        self.Create_World()
         os.system("start /B python simulate.py " + directOrGui)
         f = open("fitness.txt", "r")
         self.fitness = float (f.read())
