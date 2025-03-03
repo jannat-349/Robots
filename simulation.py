@@ -6,7 +6,7 @@ from robot import ROBOT
 import time
 
 class SIMULATION:
-    def __init__(self, directOrGUI):
+    def __init__(self, directOrGUI, solutionID):
         if directOrGUI == 'DIRECT':
             self.physicsClient = p.connect(p.DIRECT) 
         else:
@@ -19,7 +19,7 @@ class SIMULATION:
         p.loadSDF("world.sdf")
         pyrosim.Prepare_To_Simulate(self.robotId)
         self.world = WORLD()
-        self.robot = ROBOT()
+        self.robot = ROBOT(solutionID)
 
     def Run(self, directOrGui):
         for i in range(1000):
