@@ -36,13 +36,14 @@ class ROBOT:
                 desiredAngle = self.nn.Get_Value_Of(neuronName)
                 self.motors[jointName].Set_Value(robotId, desiredAngle)  
 
-    def Get_Fitness(self, robotId):
+    def Get_Fitness(self, robotId, solutionID):
         stateOfLinkZero = p.getLinkState(robotId, 0) 
         positionOfLinkZero = stateOfLinkZero[0]
         xCoordinateOfLinkZero = positionOfLinkZero[0]
-        f = open("fitness.txt", "w")
+        f = open("tmp" + str(solutionID)  + ".txt", "w")
         f.write(str(xCoordinateOfLinkZero))
         f.close()
+        os.system("rename tmp" + str(solutionID) + ".txt fitness" + str(solutionID) + ".txt")
             
 
 

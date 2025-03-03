@@ -2,6 +2,7 @@ import pyrosim.pyrosim as pyrosim
 import numpy as np
 import os
 import random
+import time
 
 class SOLUTION:
     def __init__(self, nextAvailableID):
@@ -47,14 +48,22 @@ class SOLUTION:
     def Set_ID(self, nextAvailableID):
         self.myID = nextAvailableID
 
-    def Evaluate(self, directOrGui):
+    def Start_Simulation(self, directOrGui):
         self.Create_Body([1.5, 0, 2])
         self.Create_Brain()
         self.Create_World()
         os.system("start /B python simulate.py " + directOrGui + " " + str(self.myID))
-        f = open("fitness.txt", "r")
+
+    def Wait_For_Simulation_To_End(self):
+        fitnessFileName = "fitness" + str(self.myID) + ".txt"
+        while not os.path.exists(fitnessFileName):
+            time.sleep(0.01)
+
+        f = open(fitnessFileName, "r")
         self.fitness = float (f.read())
         f.close()
+        os.system("del fitness" + str(self.myID) + ".txt")
+        print(self.fitness)
     
     def Mutate(self):
         randomRow = random.randint(0, len(self.weights)-1)
