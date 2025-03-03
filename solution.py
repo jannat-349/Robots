@@ -63,7 +63,6 @@ class SOLUTION:
         self.fitness = float (f.read())
         f.close()
         os.system("del fitness" + str(self.myID) + ".txt")
-        print(self.fitness)
     
     def Mutate(self):
         randomRow = random.randint(0, len(self.weights)-1)
