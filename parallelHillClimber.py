@@ -53,11 +53,11 @@ class PARALLEL_HILL_CLIMBER:
         self.Select()
 
     def Show_Best(self):
-        # self.parent.Evaluate("GUI")
-        pass
+        lowest_fitness_parent = min(self.parents, key=lambda parent: self.parents[parent].fitness)
+        self.parents[lowest_fitness_parent].Start_Simulation("GUI")
     
     def Evolve(self):
-        # self.parent.Evaluate("DIRECT")
-        for currentGeneration in range (c.numberOfGenerations):
-            self.Evaluate(self.parents)
+        self.Evaluate(self.parents)
+        for _ in range (c.numberOfGenerations):
             self.Evolve_For_One_Generation()
+        
