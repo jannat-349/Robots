@@ -32,8 +32,9 @@ class PARALLEL_HILL_CLIMBER:
             solutions[i].Wait_For_Simulation_To_End()
 
     def Select(self):
-        if self.parent.fitness > self.child.fitness:
-            self.parent = self.child
+        for i in range(c.populationSize):
+            if self.parents[i].fitness > self.children[i].fitness:
+                self.parents[i] = self.children[i]
     
     def Print(self):
         for parent in self.parents:
@@ -49,7 +50,7 @@ class PARALLEL_HILL_CLIMBER:
         print()
         self.Print()
         print()
-        # self.Select()
+        self.Select()
 
     def Show_Best(self):
         # self.parent.Evaluate("GUI")
