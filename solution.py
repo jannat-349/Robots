@@ -3,10 +3,11 @@ import numpy as np
 import os
 import random
 import time
+import constants as c
 
 class SOLUTION:
     def __init__(self, nextAvailableID):
-        self.weights = np.random.rand(3, 2) 
+        self.weights = np.random.rand(c.numSensorNeurons, c.numMotorNeurons) 
         self.weights = self.weights * 2 - 1
         self.Set_ID(nextAvailableID)
 
@@ -40,8 +41,8 @@ class SOLUTION:
         pyrosim.Send_Sensor_Neuron(name = 2 , linkName = "Frontleg")
         pyrosim.Send_Motor_Neuron( name = 3 , jointName = "Torso_Frontleg")
         pyrosim.Send_Motor_Neuron( name = 4 , jointName = "Torso_Backleg")
-        for currentRow in range(3):
-            for currentColumn in range(2):
+        for currentRow in range(c.numSensorNeurons):
+            for currentColumn in range(c.numMotorNeurons):
                 pyrosim.Send_Synapse(sourceNeuronName = currentRow, targetNeuronName = currentColumn + 3, weight= self.weights[currentRow][currentColumn])
         pyrosim.End()
 
