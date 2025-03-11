@@ -20,18 +20,15 @@ class SOLUTION:
         pyrosim.Start_URDF("body.urdf")
         absolutePosition = startingPosition
         pyrosim.Send_Cube(name="Torso", pos=absolutePosition , size=[1, 1, 1])
-        absolutePosition[0] = absolutePosition[0] - 0.5
-        absolutePosition[2] = absolutePosition[2] - 0.5
+        absolutePosition[1] = absolutePosition[1] + 0.5
         pyrosim.Send_Joint(name = "Torso_Frontleg" , parent= "Torso" , child = "Frontleg" , type = "revolute", position = absolutePosition)
-        absolutePosition[0] = absolutePosition[0] - 1.5
-        absolutePosition[2] = absolutePosition[2] - 2
-        pyrosim.Send_Cube(name="Frontleg", pos=absolutePosition , size=[1, 1, 1])
-        absolutePosition[0] = absolutePosition[0] + 2.5
-        absolutePosition[2] = absolutePosition[2] + 2
+        absolutePosition[2] = absolutePosition[2] - 1
+        pyrosim.Send_Cube(name="Frontleg", pos=absolutePosition , size=[0.2, 1, 0.2])
+        absolutePosition[1] = absolutePosition[1] - 1
+        absolutePosition[2] = absolutePosition[2] + 1
         pyrosim.Send_Joint(name = "Torso_Backleg" , parent= "Torso" , child = "Backleg" , type = "revolute", position = absolutePosition)
-        absolutePosition[0] = absolutePosition[0] - 1.5
-        absolutePosition[2] = absolutePosition[2] - 2
-        pyrosim.Send_Cube(name="Backleg", pos=absolutePosition , size=[1, 1, 1])
+        absolutePosition[2] = absolutePosition[2] - 1
+        pyrosim.Send_Cube(name="Backleg", pos=absolutePosition , size=[0.2, 1, 0.2])
         pyrosim.End()
 
     def Create_Brain(self):
@@ -50,7 +47,7 @@ class SOLUTION:
         self.myID = nextAvailableID
 
     def Start_Simulation(self, directOrGui):
-        self.Create_Body([1.5, 0, 2])
+        self.Create_Body([0, 0, 1])
         self.Create_Brain()
         self.Create_World()
         os.system("start /B python simulate.py " + directOrGui + " " + str(self.myID))
