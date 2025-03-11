@@ -21,12 +21,12 @@ class SOLUTION:
         absolutePosition = startingPosition
         pyrosim.Send_Cube(name="Torso", pos=absolutePosition , size=[1, 1, 1])
         absolutePosition[1] = absolutePosition[1] + 0.5
-        pyrosim.Send_Joint(name = "Torso_Frontleg" , parent= "Torso" , child = "Frontleg" , type = "revolute", position = absolutePosition)
+        pyrosim.Send_Joint(name = "Torso_Frontleg" , parent= "Torso" , child = "Frontleg" , type = "revolute", position = absolutePosition, jointAxis = "0 1 0")
         absolutePosition[2] = absolutePosition[2] - 1
         pyrosim.Send_Cube(name="Frontleg", pos=absolutePosition , size=[0.2, 1, 0.2])
         absolutePosition[1] = absolutePosition[1] - 1
         absolutePosition[2] = absolutePosition[2] + 1
-        pyrosim.Send_Joint(name = "Torso_Backleg" , parent= "Torso" , child = "Backleg" , type = "revolute", position = absolutePosition)
+        pyrosim.Send_Joint(name = "Torso_Backleg" , parent= "Torso" , child = "Backleg" , type = "revolute", position = absolutePosition, jointAxis = "0 1 0")
         absolutePosition[2] = absolutePosition[2] - 1
         pyrosim.Send_Cube(name="Backleg", pos=absolutePosition , size=[0.2, 1, 0.2])
         pyrosim.End()
