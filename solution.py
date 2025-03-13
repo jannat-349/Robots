@@ -20,14 +20,14 @@ class SOLUTION:
         pyrosim.Start_URDF("body.urdf")
         absolutePositionOfTorso = startingPosition
         pyrosim.Send_Cube(name="Torso", pos=absolutePositionOfTorso , size=[1, 1, 1])
-        absolutePositionOfTorsoBackleg = [0, 0.5, 1]
-        pyrosim.Send_Joint(name = "Torso_Backleg" , parent= "Torso" , child = "Backleg" , type = "revolute", position = absolutePositionOfTorsoBackleg, jointAxis = "1 0 0")
-        relativePositionOfBackleg = [0, 0.5, 0]
-        pyrosim.Send_Cube(name="Backleg", pos=relativePositionOfBackleg , size=[0.2, 1, 0.2])
-        absolutePositionOfTorsoFrontleg = [0, -0.5, 1]
+        absolutePositionOfTorsoFrontleg = [0, 0.5, 1]
         pyrosim.Send_Joint(name = "Torso_Frontleg" , parent= "Torso" , child = "Frontleg" , type = "revolute", position = absolutePositionOfTorsoFrontleg, jointAxis = "1 0 0")
-        relativePositionOfFrontleg = [0, -0.5, 0]
+        relativePositionOfFrontleg = [0, 0.5, 0]
         pyrosim.Send_Cube(name="Frontleg", pos=relativePositionOfFrontleg , size=[0.2, 1, 0.2])
+        absolutePositionOfTorsoBackleg = [0, -0.5, 1]
+        pyrosim.Send_Joint(name = "Torso_Backleg" , parent= "Torso" , child = "Backleg" , type = "revolute", position = absolutePositionOfTorsoBackleg, jointAxis = "1 0 0")
+        relativePositionOfBackleg = [0, -0.5, 0]
+        pyrosim.Send_Cube(name="Backleg", pos=relativePositionOfBackleg , size=[0.2, 1, 0.2])
         absolutePositionOfTorsoLeftleg = [-0.5, 0, 1]
         pyrosim.Send_Joint(name = "Torso_Leftleg" , parent= "Torso" , child = "Leftleg" , type = "revolute", position = absolutePositionOfTorsoLeftleg, jointAxis = "0 1 0")
         relativePositionOfLeftleg = [-0.5, 0, 0]
