@@ -21,14 +21,14 @@
             </geometry>
         </collision>
     </link>
-    <joint name="Torso_Frontleg" type="revolute">
+    <joint name="Torso_Backleg" type="revolute">
        <parent link="Torso"/>
-       <child  link="Frontleg"/>
+       <child  link="Backleg"/>
        <origin rpy="0 0 0" xyz="0 0.5 1" />
        <axis xyz="1 0 0"/>
        <limit effort="0.0" lower="-3.14159" upper="3.14159" velocity="0.0"/>
     </joint>
-    <link name="Frontleg">
+    <link name="Backleg">
         <inertial>
             <origin xyz="0 0.5 0" rpy="0 0 0"/>
             <mass value="1" />
@@ -50,14 +50,14 @@
             </geometry>
         </collision>
     </link>
-    <joint name="Torso_Backleg" type="revolute">
+    <joint name="Torso_Frontleg" type="revolute">
        <parent link="Torso"/>
-       <child  link="Backleg"/>
+       <child  link="Frontleg"/>
        <origin rpy="0 0 0" xyz="0 -0.5 1" />
        <axis xyz="1 0 0"/>
        <limit effort="0.0" lower="-3.14159" upper="3.14159" velocity="0.0"/>
     </joint>
-    <link name="Backleg">
+    <link name="Frontleg">
         <inertial>
             <origin xyz="0 -0.5 0" rpy="0 0 0"/>
             <mass value="1" />

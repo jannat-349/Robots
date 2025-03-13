@@ -23,14 +23,14 @@ class SOLUTION:
         pyrosim.Send_Cube(name="Torso", pos=absolutePosition , size=[1, 1, 1])
         absolutePosition = [0, 0.5, 1]
         relativePosition = absolutePosition
-        pyrosim.Send_Joint(name = "Torso_Frontleg" , parent= "Torso" , child = "Frontleg" , type = "revolute", position = absolutePosition, jointAxis = "1 0 0")
-        relativePosition[2] = absolutePosition[2] - 1
-        pyrosim.Send_Cube(name="Frontleg", pos=relativePosition , size=[0.2, 1, 0.2])
-        absolutePosition = [0, -0.5, 1]
         pyrosim.Send_Joint(name = "Torso_Backleg" , parent= "Torso" , child = "Backleg" , type = "revolute", position = absolutePosition, jointAxis = "1 0 0")
-        relativePosition = absolutePosition
         relativePosition[2] = absolutePosition[2] - 1
         pyrosim.Send_Cube(name="Backleg", pos=relativePosition , size=[0.2, 1, 0.2])
+        absolutePosition = [0, -0.5, 1]
+        pyrosim.Send_Joint(name = "Torso_Frontleg" , parent= "Torso" , child = "Frontleg" , type = "revolute", position = absolutePosition, jointAxis = "1 0 0")
+        relativePosition = absolutePosition
+        relativePosition[2] = absolutePosition[2] - 1
+        pyrosim.Send_Cube(name="Frontleg", pos=relativePosition , size=[0.2, 1, 0.2])
         absolutePosition = [-0.5, 0, 1]
         pyrosim.Send_Joint(name = "Torso_Leftleg" , parent= "Torso" , child = "Leftleg" , type = "revolute", position = absolutePosition, jointAxis = "0 1 0")
         relativePosition = absolutePosition
