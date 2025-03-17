@@ -111,3 +111,5 @@ class SOLUTION:
         randomCol = random.randint(0, len(self.weights[randomRow])-1)
         self.weights[randomRow][randomCol] = random.random() * 2 - 1
     
+
+    
